@@ -47,3 +47,40 @@ class OrdersRepository:
         collection = self.__db_connection.get_collection(self.__collection_name)
         data = collection.find_one({ "_id": ObjectId(object_id) })
         return data
+
+    def edit_registry(self) -> None:
+        # Primeiro uma busca e depois uma alteração
+        collection = self.__db_connection.get_collection(self.__collection_name)
+        collection.update_one(
+            { "_id": ObjectId('66946242f2c205dcb32056ce') }, 
+            # Filtro de busca(qual elemento vamos querer atualizar)
+            { "$set": { "itens.pizza.quantidade": 12 } } # Edição
+            # Estamos mudando de false para true
+        )
+
+    def edit_many_registries(self) -> None:
+        collection = self.__db_connection.get_collection(self.__collection_name)
+        collection.update_many(
+            { "itens.refrigerante": { "$exists": True } }, 
+            # Filtro de busca(qual elemento vamos querer atualizar)
+            { "$set": { "itens.refrigerante.quantidade": 12 } } # Edição
+            # Estamos mudando de false para true
+        )
+
+    def edit_registry_with_increment(self) -> None:
+        # Primeiro uma busca e depois uma alteração
+        collection = self.__db_connection.get_collection(self.__collection_name)
+        collection.update_one(
+            { "_id": ObjectId('66946242f2c205dcb32056ce') },            
+            { "$inc": { "itens.pizza.quantidade": 50 } } # Edição
+            # Vai incrementar 50 ao banco de dados
+        )
+
+    def delete_registry(self) -> None:
+        collection = self.__db_connection.get_collection(self.__collection_name)
+        collection.delete_one({ "_id": ObjectId('66946242f2c205dcb32056ce') })
+
+    def delete_many_registries(self) -> None:
+        collection = self.__db_connection.get_collection(self.__collection_name)
+        collection.delete_many({ "itens.refrigerante": { "$exists": True } })
+        
