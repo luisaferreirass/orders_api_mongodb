@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from src.main.http_types.http_request import HttpRequest
 from src.main.http_types.http_response import HttpResponse
+from src.main.composer.registry_order_composer import registry_order_composer
 
 delivery_routes_bp = Blueprint("delivery_routes", __name__)
 
