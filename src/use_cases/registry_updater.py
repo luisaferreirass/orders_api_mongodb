@@ -7,7 +7,7 @@ class RegistryUpdater:
     def __init__(self, orders_repository: OrdersRepositoryInterface):
         self.__orders_repository = orders_repository
 
-    def updater(self, http_request: HttpRequest) -> HttpResponse:
+    def update(self, http_request: HttpRequest) -> HttpResponse:
         try:
             order_id = http_request.path_params["order_id"]
             body = http_request.body
