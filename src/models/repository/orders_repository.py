@@ -84,4 +84,3 @@ class OrdersRepository(OrdersRepositoryInterface):
     def delete_many_registries(self) -> None:
         collection = self.__db_connection.get_collection(self.__collection_name)
         collection.delete_many({ "itens.refrigerante": { "$exists": True } })
-        
