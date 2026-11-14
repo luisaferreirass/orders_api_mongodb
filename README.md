@@ -1,64 +1,64 @@
 # 📦 Orders API MongoDB
 
-## 📝 Sobre o projeto
+## 📝 About the project
 
-API REST para gerenciamento de pedidos desenvolvida com **Python** e **MongoDB**. O projeto implementa operações CRUD completas utilizando banco de dados NoSQL, demonstrando a flexibilidade e escalabilidade do MongoDB para aplicações modernas.
+REST API for order management built with **Python** and **MongoDB**. The project implements full CRUD operations using a NoSQL database, showcasing MongoDB's flexibility and scalability for modern applications.
 
-Ideal para aprendizado de:
-- Bancos de dados NoSQL (MongoDB)
-- APIs RESTful com Python
-- PyMongo - Driver oficial do MongoDB
-- Operações CRUD em documentos
-- Modelagem de dados orientada a documentos
-- Testes automatizados com Pytest
-- Boas práticas de código com Pylint
+Great for learning:
+- NoSQL databases (MongoDB)
+- RESTful APIs with Python
+- PyMongo - The official MongoDB driver
+- CRUD operations on documents
+- Document-oriented data modeling
+- Automated testing with Pytest
+- Clean code practices with Pylint
 
-## 🚀 Tecnologias utilizadas
+## 🚀 Technologies used
 
 - **Python 3.x**
-- **MongoDB** - Banco de dados NoSQL
-- **PyMongo 4.10.1** - Driver oficial do MongoDB para Python
-- **DNSPython 2.7.0** - Suporte para conexões MongoDB Atlas
-- **Pytest 8.3.3** - Framework de testes
-- **Pylint 3.3.1** - Análise estática de código
-- **isort 5.13.2** - Organização de imports
+- **MongoDB** - NoSQL database
+- **PyMongo 4.10.1** - Official MongoDB driver for Python
+- **DNSPython 2.7.0** - Support for MongoDB Atlas connections
+- **Pytest 8.3.3** - Testing framework
+- **Pylint 3.3.1** - Static code analysis
+- **isort 5.13.2** - Import sorting
 
-## ⚙️ Como executar
+## ⚙️ How to run
 
-### Pré-requisitos
+### Prerequisites
 
-- Python 3.x instalado
-- MongoDB instalado localmente ou conta no MongoDB Atlas
-- pip (gerenciador de pacotes Python)
+- Python 3.x installed
+- MongoDB installed locally or a MongoDB Atlas account
+- pip (Python package manager)
 
-### Configuração do MongoDB
+### MongoDB Setup
 
-**Opção 1: MongoDB Local**
+**Option 1: Local MongoDB**
 ```bash
-# Instale o MongoDB Community Edition
-# Inicie o serviço MongoDB
+# Install MongoDB Community Edition
+# Start the MongoDB service
 mongod
 ```
 
-**Opção 2: MongoDB Atlas (Cloud)**
-1. Crie uma conta em [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
-2. Crie um cluster gratuito
-3. Obtenha a string de conexão
+**Option 2: MongoDB Atlas (Cloud)**
+1. Create an account on [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+2. Create a free cluster
+3. Get the connection string
 
-### Instalação
+### Installation
 
-1. Clone o repositório:
+1. Clone the repository:
 ```bash
 git clone https://github.com/luisaferreirass/orders_api_mongodb.git
 cd orders_api_mongodb
 ```
 
-2. Crie um ambiente virtual (recomendado):
+2. Create a virtual environment (recommended):
 ```bash
 python -m venv venv
 ```
 
-3. Ative o ambiente virtual:
+3. Activate the virtual environment:
 ```bash
 # Windows
 venv\Scripts\activate
@@ -67,58 +67,58 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-4. Instale as dependências:
+4. Install the dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-5. Configure a conexão com o MongoDB:
+5. Configure the MongoDB connection:
 ```python
-# Configure a URI de conexão no seu arquivo de configuração
+# Set the connection URI in your configuration file
 MONGO_URI = "mongodb://localhost:27017/"  # Local
-# ou
+# or
 MONGO_URI = "mongodb+srv://user:password@cluster.mongodb.net/"  # Atlas
 ```
 
-### Executando a aplicação
+### Running the application
 ```bash
 python app.py
 ```
 
-A API estará disponível em: `http://localhost:5000`
+The API will be available at: `http://localhost:5000`
 
-### Executando os testes
+### Running the tests
 ```bash
 pytest
 ```
 
-ou para ver mais detalhes:
+or, for more details:
 ```bash
 pytest -v
 ```
 
-### Análise de código
+### Code analysis
 ```bash
-# Verificar qualidade do código
+# Check code quality
 pylint *.py
 
-# Organizar imports
+# Sort imports
 isort .
 ```
 
-## 🎯 Funcionalidades
+## 🎯 Features
 
-- ➕ **Criar** novos pedidos
-- 📋 **Listar** todos os pedidos
-- 🔍 **Buscar** pedido específico por ID
-- ✏️ **Atualizar** informações de pedidos
-- 🗑️ **Deletar** pedidos
-- 🔎 **Filtrar** pedidos por status, cliente, data, etc.
-- 📊 **Agregações** para análise de dados
+- ➕ **Create** new orders
+- 📋 **List** all orders
+- 🔍 **Find** a specific order by ID
+- ✏️ **Update** order information
+- 🗑️ **Delete** orders
+- 🔎 **Filter** orders by status, customer, date, etc.
+- 📊 **Aggregations** for data analysis
 
-## 🛠️ Modelo de dados
+## 🛠️ Data model
 
-### Order (Pedido)
+### Order
 ```json
 {
   "_id": "ObjectId",
@@ -130,7 +130,7 @@ isort .
   },
   "items": [
     {
-      "product_name": "Produto A",
+      "product_name": "Product A",
       "quantity": 2,
       "unit_price": 50.00,
       "total": 100.00
@@ -143,36 +143,36 @@ isort .
 }
 ```
 
-### Campos principais
+### Main fields
 
-| Campo | Tipo | Descrição |
+| Field | Type | Description |
 |-------|------|-----------|
-| _id | ObjectId | Identificador único do MongoDB |
-| order_number | String | Número do pedido |
-| customer | Object | Dados do cliente |
-| items | Array | Lista de itens do pedido |
-| total_amount | Number | Valor total do pedido |
-| status | String | Status do pedido (pending, processing, shipped, delivered, cancelled) |
-| created_at | DateTime | Data de criação |
-| updated_at | DateTime | Data de atualização |
+| _id | ObjectId | MongoDB unique identifier |
+| order_number | String | Order number |
+| customer | Object | Customer data |
+| items | Array | List of order items |
+| total_amount | Number | Order total |
+| status | String | Order status (pending, processing, shipped, delivered, cancelled) |
+| created_at | DateTime | Creation date |
+| updated_at | DateTime | Last update date |
 
-## 📸 Endpoints da API
+## 📸 API Endpoints
 
-### Pedidos
+### Orders
 
-| Método | Endpoint | Descrição |
+| Method | Endpoint | Description |
 |--------|----------|-----------|
-| GET | `/orders` | Lista todos os pedidos |
-| GET | `/orders/<id>` | Busca um pedido específico |
-| POST | `/orders` | Cria um novo pedido |
-| PUT | `/orders/<id>` | Atualiza um pedido existente |
-| PATCH | `/orders/<id>` | Atualização parcial de um pedido |
-| DELETE | `/orders/<id>` | Deleta um pedido |
-| GET | `/orders/status/<status>` | Filtra pedidos por status |
+| GET | `/orders` | Lists all orders |
+| GET | `/orders/<id>` | Retrieves a specific order |
+| POST | `/orders` | Creates a new order |
+| PUT | `/orders/<id>` | Updates an existing order |
+| PATCH | `/orders/<id>` | Partially updates an order |
+| DELETE | `/orders/<id>` | Deletes an order |
+| GET | `/orders/status/<status>` | Filters orders by status |
 
-## 💡 Exemplos de uso
+## 💡 Usage examples
 
-### Criar um pedido
+### Create an order
 ```bash
 POST /orders
 Content-Type: application/json
@@ -203,7 +203,7 @@ Content-Type: application/json
 }
 ```
 
-**Resposta:**
+**Response:**
 ```json
 {
   "message": "Pedido criado com sucesso",
@@ -211,12 +211,12 @@ Content-Type: application/json
 }
 ```
 
-### Listar todos os pedidos
+### List all orders
 ```bash
 GET /orders
 ```
 
-**Resposta:**
+**Response:**
 ```json
 {
   "orders": [
@@ -236,12 +236,12 @@ GET /orders
 }
 ```
 
-### Buscar pedido por ID
+### Find an order by ID
 ```bash
 GET /orders/65c0a1b2c3d4e5f6a7b8c9d0
 ```
 
-### Atualizar status do pedido
+### Update order status
 ```bash
 PATCH /orders/65c0a1b2c3d4e5f6a7b8c9d0
 Content-Type: application/json
@@ -251,42 +251,42 @@ Content-Type: application/json
 }
 ```
 
-**Resposta:**
+**Response:**
 ```json
 {
   "message": "Pedido atualizado com sucesso"
 }
 ```
 
-### Filtrar pedidos por status
+### Filter orders by status
 ```bash
 GET /orders/status/pending
 ```
 
-### Deletar um pedido
+### Delete an order
 ```bash
 DELETE /orders/65c0a1b2c3d4e5f6a7b8c9d0
 ```
 
-**Resposta:**
+**Response:**
 ```json
 {
   "message": "Pedido deletado com sucesso"
 }
 ```
 
-## 🗄️ Vantagens do MongoDB
+## 🗄️ Advantages of MongoDB
 
-- **Schema Flexível**: Documentos podem ter estruturas diferentes
-- **Escalabilidade Horizontal**: Fácil distribuição de dados
-- **Performance**: Queries rápidas com indexação eficiente
-- **Documentos JSON**: Estrutura natural para APIs REST
-- **Agregações Poderosas**: Pipeline de agregação para análises complexas
-- **Embedded Documents**: Relacionamentos mais eficientes
+- **Flexible Schema**: Documents can have different structures
+- **Horizontal Scalability**: Easy data distribution
+- **Performance**: Fast queries with efficient indexing
+- **JSON Documents**: A natural structure for REST APIs
+- **Powerful Aggregations**: Aggregation pipeline for complex analysis
+- **Embedded Documents**: More efficient relationships
 
-## 📊 Exemplos de Agregações
+## 📊 Aggregation Examples
 ```python
-# Total de vendas por status
+# Total sales by status
 db.orders.aggregate([
     {
         "$group": {
@@ -297,7 +297,7 @@ db.orders.aggregate([
     }
 ])
 
-# Produtos mais vendidos
+# Best-selling products
 db.orders.aggregate([
     {"$unwind": "$items"},
     {
@@ -311,33 +311,33 @@ db.orders.aggregate([
 ])
 ```
 
-## 🧪 Testes
+## 🧪 Tests
 
-O projeto inclui testes automatizados com Pytest cobrindo:
-- Criação de pedidos
-- Listagem e busca
-- Atualização de dados
-- Deleção de pedidos
-- Validações de dados
-- Casos de erro
+The project includes automated tests with Pytest covering:
+- Order creation
+- Listing and lookup
+- Data updates
+- Order deletion
+- Data validation
+- Error cases
 
-## 📝 Boas Práticas Implementadas
+## 📝 Best Practices Implemented
 
-- **Pylint**: Análise estática de código para qualidade
-- **isort**: Imports organizados e padronizados
-- **Pytest**: Testes automatizados abrangentes
-- **Validação de dados**: Verificação de entrada
-- **Tratamento de erros**: Respostas claras para erros
-- **Documentação**: Código bem documentado
+- **Pylint**: Static code analysis for quality
+- **isort**: Organized, standardized imports
+- **Pytest**: Comprehensive automated tests
+- **Data validation**: Input checks
+- **Error handling**: Clear error responses
+- **Documentation**: Well-documented code
 
-## 🤝 Contribuindo
+## 🤝 Contributing
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.
+Contributions are welcome! Feel free to open issues or submit pull requests.
 
-## 📄 Licença
+## 📄 License
 
-Este projeto está sob a licença MIT.
+This project is licensed under the MIT License.
 
-## 👩‍💻 Autora
+## 👩‍💻 Author
 
-Desenvolvido por [Luisa Ferreira](https://github.com/luisaferreirass)
+Developed by [Luisa Ferreira](https://github.com/luisaferreirass)
